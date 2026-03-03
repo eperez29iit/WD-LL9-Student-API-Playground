@@ -1,46 +1,89 @@
-// STEP 1: Select elements from the page -- Instructor explain Step 1-2 & demo/explain Step 3 event listener
+// ========================================
+// API PLAYGROUND - STUDENT PRACTICE
+// ========================================
 
-const factButton = document.getElementById("fact-button");
+// STEP 1: Choose Your API
+// Browse free APIs at: https://github.com/public-apis/public-apis
+// Examples:
+//   - Cat Facts: https://catfact.ninja/fact
+//   - Dog Images: https://dog.ceo/api/breeds/image/random
+//   - Advice Slip: https://api.adviceslip.com/advice
+//   - Bored API: https://www.boredapi.com/api/activity
 
-const factDisplay = document.getElementById("fact-display");
+// STEP 2: Test Your API
+// Open your chosen API URL in your browser to see the JSON response
+// Make sure it works before continuing!
 
+// STEP 3: Paste your API URL here
+const API_URL = "PASTE_API_URL_HERE";
 
-// STEP 2: Create function to fetch data from API
+// ========================================
+// STEP 4: Write Your Fetch Code
+// ========================================
+// TODO: Uncomment the code below and replace PASTE_API_URL_HERE with your API_URL variable
 
-function fetchCatFact() {
+/*
+fetch("PASTE_API_URL_HERE")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    });
+*/
 
-    // Show loading message - Explain this line of code
-    factDisplay.textContent = "Loading cat fact...";
+// After uncommenting, save and refresh your page.
+// Open the browser console (F12) to see your data!
 
-    // Fetch data from API
-    fetch("https://catfact.ninja/fact")
+// ========================================
+// STEP 5: Display Data on Page
+// ========================================
+// TODO:
+// 1. Go to index.html and add: <div id="output"></div>
+// 2. Uncomment the code below
+// 3. Update the data property to match your API (e.g., data.fact, data.message, etc.)
 
-        .then(function(response) {
+/*
+const output = document.getElementById("output");
 
-            // Convert response to JSON
-            return response.json();
+fetch(API_URL)
+    .then(response => response.json())
+    .then(data => {
+        output.innerText = data.fact; // TODO: Change 'fact' to match your API's data structure
+    });
+*/
 
-        })
+// ========================================
+// STEP 6: Add a Button to Fetch New Data
+// ========================================
+// TODO:
+// 1. Go to index.html and add: <button id="fetch-btn">Get New Data</button>
+// 2. Uncomment the code below
 
-        .then(function(data) {
+/*
+const button = document.getElementById("fetch-btn");
 
-            // Display fact on page
-            factDisplay.textContent = data.fact;
-
-        })
-
-        .catch(function(error) {
-
-            // Handle errors
-            factDisplay.textContent = "Something went wrong. Try again.";
-
-            console.log(error);
-
+button.addEventListener("click", function() {
+    fetch(API_URL)
+        .then(response => response.json())
+        .then(data => {
+            output.innerText = data.fact; // TODO: Change 'fact' to match your API's data structure
         });
+});
+*/
 
-}
+// ========================================
+// STEP 7: BONUS - Add Image Support (if your API includes images)
+// ========================================
+// TODO: If your API returns images, uncomment and modify:
 
-
-// STEP 3: Add click event listener to button - Instructor add in event listener and explain
-
-
+/*
+button.addEventListener("click", function() {
+    fetch(API_URL)
+        .then(response => response.json())
+        .then(data => {
+            output.innerHTML = `
+                <img src="${data.image}" width="300">
+                <p>${data.fact}</p>
+            `;
+        });
+});
+*/
