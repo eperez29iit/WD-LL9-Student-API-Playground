@@ -64,6 +64,24 @@ button.addEventListener("click", function () {
     });
 });
 
+const output2 = document.getElementById("output2");
+
+fetch("https://api.adviceslip.com/advice")
+  .then((response) => response.json())
+  .then((data) => {
+    output2.innerText = data.slip.advice; // TODO: Change 'slip' to match your API's data structure
+  });
+
+const button2 = document.getElementById("fetch-btn2");
+
+button2.addEventListener("click", function () {
+  fetch("https://api.adviceslip.com/advice")
+    .then((response) => response.json())
+    .then((data) => {
+      output2.innerText = data.slip.advice; // TODO: Change 'fact' to match your API's data structure
+    });
+});
+
 // ========================================
 // STEP 7: BONUS - Add Image Support (if your API includes images)
 // ========================================
